@@ -110,9 +110,6 @@ jobs:
   python-test-notebooks:
     needs: rust-build-and-test
     runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: docs
     strategy:
       matrix:
         python-version: [3.8]
@@ -138,7 +135,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd ..
           python -m pip install --upgrade pip
           python -m pip install flake8 pytest nbmake pytest-xdist
           python -m pip install -r .binder/requirements.txt
